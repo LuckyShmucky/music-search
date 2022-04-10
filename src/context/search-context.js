@@ -1,7 +1,8 @@
 import React, {createContext} from "react"
 
-export const SearchContext = createContext({
-    term: "",
-    handleSearch: ()=>{}
-})
+const SearchContext = createContext({})
+
+export function SearchBarProvider({children}){
+    
+}
 
