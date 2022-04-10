@@ -1,12 +1,19 @@
-import logo from './logo.svg';
+
 import './App.css';
-import React, { useState, useEffect, useRef} from 'react'
+//tools
+import React, { useState, useEffect, useRef, Fragment} from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+//context
 import { DataContext } from './context/data-context'
-// import { SearchContext } from './context/search-context';
+
+//components
 import Gallery from './components/gallery'
 import SearchBar from './components/search-bar'
 
-
+//views 
+import AlbumView from './views/album-view';
+import ArtistView from './views/artist-view';
 
 function App() {
   
@@ -48,15 +55,25 @@ const handleSearch = (event, term) => {
 return (
   <div>
       {message}
-     {/* <SearchContext.Provider value={{
-       term: '',
-       handleSearch,
-      }}> */}
-     {/* </SearchContext.Provider> */}
-      <SearchBar handleSearch={handleSearch} />
-      <DataContext.Provider value={data}>
-      <Gallery />
-      </DataContext.Provider >
+    
+    <Router>
+      <Routes>
+        <Route path='/' element={
+         <Fragment>
+         <SearchBar handleSearch={handleSearch} />
+          <DataContext.Provider value={data}>
+            <Gallery />
+          </DataContext.Provider >
+         </Fragment>
+        }/>
+      <Route path='/album:id' element={<AlbumView/>}/>
+      <Route path='/artist:id' element={<ArtistView/>} />
+
+      
+      
+      </Routes>
+      </Router>  
+  
   </div>
 )
 
