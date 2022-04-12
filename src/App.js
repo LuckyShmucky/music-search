@@ -15,6 +15,8 @@ import SearchBar from './components/search-bar'
 import AlbumView from './views/album-view';
 import ArtistView from './views/artist-view';
 
+
+//App componentSe
 function App() {
   
   let [search, setSearch] = useState('')
@@ -66,8 +68,8 @@ return (
           </DataContext.Provider >
          </Fragment>
         }/>
-      <Route path='/album:id' element={<AlbumView/>}/>
-      <Route path='/artist:id' element={<ArtistView/>} />
+      <Route path='/album/:id' element={<AlbumView/>}/>
+      <Route path='/artist/:id' element={<ArtistView/>} />
 
       
       
